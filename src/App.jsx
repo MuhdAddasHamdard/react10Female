@@ -7,15 +7,21 @@ import Header from "./components/Header";
 import About from "./components/About/About";
 import Form from "./components/Form";
 import Counter from "./components/Counter";
-import New from "./components/New";
-import NewForm from "./components/NewForm";
+// import New from "./components/New";
+// import NewForm from "./components/NewForm";
 function App() {
   return (
-    <>
-      {/* <New /> */}
+    <Router>
+      <div>
+        <Header />
 
-      <NewForm />
-    </>
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/form" element={<Form />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

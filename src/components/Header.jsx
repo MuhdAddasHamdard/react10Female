@@ -1,19 +1,41 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
+  const links = [
+    {
+      path: "/",
+      value: "About",
+    },
+    {
+      path: "/counter",
+      value: "Counter",
+    },
+    {
+      path: "/form",
+      value: "Form",
+    },
+  ];
   return (
     <div>
       <nav>
         <ul className="flex justify-center gap-2.5">
-          <li>
-            <Link to="/">About</Link>
-          </li>
-          <li>
-            <Link to="/counter">Counter</Link>
-          </li>
-          <li>
-            <Link to="/form">get in touch </Link>
-          </li>
+          {links.map((link) => {
+            return (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-blue-300 text-white rounded p-1 underline"
+                      : "hover:bg-blue-300"
+                  }
+                  to={link.path}
+                >
+                  {link.value}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
