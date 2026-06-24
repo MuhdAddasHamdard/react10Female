@@ -1,27 +1,20 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
-const NewForm = () => {
-  const name = useRef(null);
-  const password = useRef(null);
+const FormUseState = () => {
+  const [form, setForm] = useState({
+    name: "",
+    pass: "",
+  });
 
-  const handleForm = (e) => {
-    e.preventDefault();
-    const formData = {
-      userName: "",
-      userPass: "",
-    };
-
-    formData.userName = name.current.value;
-    formData.userPass = password.current.value;
-    console.log(formData);
-    // console.log("Name:", name.current.value);
-    // console.log("Password:", password.current.value);
+  const formValues = (event) => {
+    event.preventDefault();
+    console.log(form);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
       <form
-        onSubmit={handleForm}
+        onSubmit={formValues}
         className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg"
       >
         <h2 className="text-3xl font-bold text-center text-slate-800 mb-6">
@@ -31,7 +24,10 @@ const NewForm = () => {
         <div className="mb-4">
           <label className="block mb-2 text-slate-700 font-medium">Name</label>
           <input
-            ref={name}
+            onChange={(obj) => {
+              setForm({ ...form, name: obj.target.value });
+            }}
+            value={form.name}
             type="text"
             placeholder="Enter your name"
             className="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
@@ -43,7 +39,10 @@ const NewForm = () => {
             Password
           </label>
           <input
-            ref={password}
+            onChange={(obj) => {
+              setForm({ ...form, pass: obj.target.value });
+            }}
+            value={form.pass}
             type="password"
             placeholder="Enter your password"
             className="w-full px-4 py-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
@@ -61,4 +60,4 @@ const NewForm = () => {
   );
 };
 
-export default NewForm;
+export default FormUseState;
