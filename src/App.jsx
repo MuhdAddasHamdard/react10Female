@@ -3,12 +3,12 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 
-import Mount from "./components/Mount";
+import Data from "./components/Data";
 
 function App() {
   return (
     <div>
-      <Mount />
+      <Data />
     </div>
   );
 }
