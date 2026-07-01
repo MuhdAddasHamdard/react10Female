@@ -1,25 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import UseData from "./customHooks/UseState";
 
 const Data = () => {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typode.com/users")
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((err) => {
-        setError(err);
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const { users, error, loading } = UseData();
 
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-8">
